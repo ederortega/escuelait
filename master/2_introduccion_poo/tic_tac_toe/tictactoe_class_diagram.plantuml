@@ -1,0 +1,56 @@
+@startuml
+
+skin rose
+
+class TicTacToe {
+    void play()
+    void result()
+    void main()
+}
+
+TicTacToe *--> Board
+TicTacToe "1" *--> "2" Player
+TicTacToe *--> Turn
+
+class Board {
+    -int DIMENSION = 3
+    -char EMPTY
+    -char[][] grid
+    void show()
+    boolean isFull()
+    boolean isTicTacToe()
+    void setToken(char, Coordinate)
+}
+
+Board ..> Coordinate
+
+class Player {
+    -char token
+    Player(char)
+    char getToken()
+    void place(Board)
+    boolean win(Board)
+}
+
+Player ..> Board
+
+class Turn {
+    -int index
+    Turn()
+    int who()
+    int opposite()
+    void shift()
+}
+
+class Coordinate {
+   -int MAXIMUM_VALUE = 2
+   -inr row
+   -int column
+   Coordinate()
+   Coordinate(int row, int column)
+   void read()
+   int readValidValue(String)
+   int getRow()
+   int getColumn()
+}
+@enduml
